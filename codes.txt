@@ -1,0 +1,330 @@
+import numpy as np
+# Let's define a one-dimensional array 
+list_1=[50,60,80,100,200,500,600]
+list_1
+
+my_numpy_array=np.array(list_1)
+my_numpy_array
+
+type(my_numpy_array)
+
+my_matrix=np.array([ [2,5,8], [7,3,6]  ])
+my_matrix
+
+x = np.array([[3, 7, 9, 3] , [4, 3, 2, 2]])
+x
+
+x=np.random.rand(20)
+x
+
+x=np.random.rand(3,3)
+x
+
+x=np.random.randint(1,50)
+x
+
+x=np.random.randint(1,100,15)
+x
+
+x=np.arange(1,50)
+x
+
+x=np.eye(7)
+x
+
+# Matrix of ones
+x=np.ones((7,7))
+x
+
+# Array of zeros
+x=np.zeros(8)
+x
+
+MINI CHALLENGE #2:
+Write a code that takes in a positive integer "x" from the user and creates a 1x10 array with random numbers ranging from 0 to "x"
+x=int(input("please enter a positive integer value"))
+x2=np.random.randint(1,x,10)
+x2
+
+
+# np.arange() returns an evenly spaced values within a given interval
+x=np.arange(1,10)
+x
+
+y=np.arange(1,10)
+y
+
+# Add 2 numpy arrays together
+sum=x+y
+sum
+
+sq=x**2
+sq
+
+sqrt=np.sqrt(sq)
+sqrt
+
+z=np.exp(y)
+z
+
+MINI CHALLENGE #3:
+Given the X and Y values below, obtain the distance between them
+X = [5, 7, 20]
+Y = [9, 15, 4]
+
+X=np.array([5,7,20])
+Y=np.array([9,15,4])
+Z=np.sqrt(X**2 + Y**2)
+Z
+
+mna=np.array([3,5,6,2,8,10,20,50])
+mna
+
+# Access specific index from the numpy array
+mna[0]
+
+# Starting from the first index 0 up until and NOT including the last element
+mna[0:3]
+
+# Broadcasting, altering several values in a numpy array at once
+mna[0:4]=7
+mna
+
+# Let's define a two dimensional numpy array
+matrix=np.random.randint(1,10,(4,4))
+matrix
+
+# Get a row from a mtrix
+matrix[0]
+
+# Get one element
+matrix[0][2]
+
+X = np.array([[2, 30, 20, -2, -4,],
+    [3, 4, 40, -3, -2],
+    [-3, 4, -6, 90, 10],
+    [25, 45, 34, 22, 12],
+    [13, 24, 22, 32, 37]])
+X[4]=0
+X
+
+mt=np.random.randint(1,10,(5,5))
+mt
+
+mt2=mt[mt>7]
+mt2
+
+# Obtain odd elements only
+mt2=mt[mt%2==1]
+mt2
+
+X = np.array([[2, 30, 20, -2, -4],
+    [3, 4,  40, -3, -2],
+    [-3, 4, -6, 90, 10],
+    [25, 45, 34, 22, 12],
+    [13, 24, 22, 32, 37]])
+X[X<0]=0
+X[X%2 == 1]=-2
+X
+
+# Pandas is a data manipulation and analysis tool that is built on Numpy.
+# Pandas uses a data structure known as DataFrame (think of it as Microsoft excel in Python). 
+# DataFrames empower programmers to store and manipulate data in a tabular fashion (rows and columns).
+# Series Vs. DataFrame? Series is considered a single column of a DataFrame.
+
+import pandas as pd
+
+# Let's define a two-dimensional Pandas DataFrame
+# Note that you can create a pandas dataframe from a python dictionary
+bank_client_df=pd.DataFrame({'Bank Client ID':[111,222,333,444],
+                            'Bank Client Name':['sk','ak','np','tt'],
+                            'Net Worth[$]':[350,350,320,400],
+                            'Years With Bank':[3,4,9,5]})
+bank_client_df
+
+# Let's obtain the data type 
+type(bank_client_df)
+
+# you can only view the first couple of rows using .head()
+bank_client_df.head(2)
+
+# you can only view the last couple of rows using .tail()
+bank_client_df.tail(2)
+
+MINI CHALLENGE #6:
+
+A porfolio contains a collection of securities such as stocks, bonds and ETFs. Define a dataframe named 'portfolio_df' that holds 3 different stock ticker symbols, number of shares, and price per share (feel free to choose any stocks)
+Calculate the total value of the porfolio including all stocks
+pf=pd.DataFrame({'stock symbol':['AAPL','AMZN','T'],
+                'Price per share[$]':[3500,200,40],
+                'Number of stocks':[3,4,9]})
+stock_value=pf['Price per share[$]']* pf['Number of stocks']
+stock_value
+
+!pip install lxml --run these for solving issue
+!python -m pip install --upgrade pip
+(now click on kernal->Restart and Run All)
+
+hs=pd.read_html('http://www.livingin-canada.com/house-prices-canada.html')
+hs[0]
+
+#Challenge 7
+hs1=pd.read_html('https://www.ssa.gov/oact/progdata/nra.html')
+hs1[0]
+
+# Let's define a dataframe as follows:
+bank_client_df=pd.DataFrame({'Bank Client ID':[111,222,333,444],
+                            'Bank Client Name':['sk','ak','np','tt'],
+                            'Net Worth[$]':[350,350,320,400],
+                            'Years With Bank':[3,4,9,5]})
+bank_client_df
+
+# Pick certain rows that satisfy a certain criteria 
+df_loyal=bank_client_df[bank_client_df['Years With Bank']>=5]
+df_loyal
+
+# Delete a column from a DataFrame
+del bank_client_df['Bank Client ID']
+bank_client_df
+
+MINI CHALLENGE #8:
+hn=bank_client_df[bank_client_df['Net Worth[$]']>=5000]
+hn
+hn['Net Worth[$]'].sum()
+
+# Define a function that increases all clients networth (stocks) by a fixed value of 20% (for simplicity sake) 
+def nupdate(b):
+    return b*1.2
+
+# You can apply a function to the DataFrame 
+bank_client_df['Net worth [$]'].apply(nupdate)
+
+bank_client_df['Bank Client Name'].apply(len)
+
+MINI CHALLENGE #9:
+def nnupdate(b):
+    return b*3 + 200
+
+result=bank_client_df['Net worth [$]'].apply(nnupdate)
+result
+
+# Let's define a dataframe as follows:
+bank_client_df = pd.DataFrame({'Bank client ID':[111, 222, 333, 444], 
+                               'Bank Client Name':['Chanel', 'Steve', 'Mitch', 'Ryan'], 
+                               'Net worth [$]':[3500, 29000, 10000, 2000], 
+                               'Years with bank':[3, 4, 9, 5]})
+bank_client_df
+
+# You can sort the values in the dataframe according to number of years with bank
+bank_client_df.sort_values(by='Years with bank')
+
+# Note that nothing changed in memory! you have to make sure that inplace is set to True
+bank_client_df
+
+# Set inplace = True to ensure that change has taken place in memory 
+bank_client_df.sort_values(by='Years with bank', inplace=True)
+
+# Note that now the change (ordering) took place 
+bank_client_df
+
+df1=pd.DataFrame({'A':['A0','A1','A2','A3'],
+                 'B':['B0','B1','B2','B3'],
+                 'C':['C0','C1','C2','C3'],
+                 'D':['D0','D1','D2','D3']},
+                index=[0,1,2,3])
+df1
+
+
+df2=pd.DataFrame({'A':['A4','A5','A6','A7'],
+                 'B':['B4','B5','B6','B7'],
+                 'C':['C4','C5','C6','C7'],
+                 'D':['D4','D5','D6','D7']},
+                index=[4,5,6,7])
+df2
+
+
+df3=pd.DataFrame({'A':['A8','A9','A10','A11'],
+                 'B':['B8','B9','B10','B11'],
+                 'C':['C8','C9','C10','C11'],
+                 'D':['D8','D9','D10','D11']},
+                index=[8,9,10,11])
+df3
+
+
+pd.concat([df1,df2,df3])
+
+raw_data={'Bank Client ID':['1','2','3','4','5'],
+         'First Name':['Nancy','Alex','Shep','Max','Allen'],
+         'Last Name':['Rob','Ali','George','Mitch','Steve']}
+Bank_df_1=pd.DataFrame(raw_data,columns=['Bank Client ID','First Name','Last Name'])
+Bank_df_1
+
+
+raw_data={'Bank Client ID':['6','7','8','9','10'],
+         'First Name':['Bill','Dina','Sarah','Heather','Holly'],
+         'Last Name':['Christian','Mo','Steve','Rob','Michelle']}
+Bank_df_2=pd.DataFrame(raw_data,columns=['Bank Client ID','First Name','Last Name'])
+Bank_df_2
+
+
+
+raw_data={'Bank Client ID':['1','2','3','4','5','6','7','8','9','10'],
+         'Annual Salary [$/year]':[25000,35000,45000,48000,49000,32000,33000,34000,23000,22000]}
+bank_df_salary=pd.DataFrame(raw_data,columns=['Bank Client ID','Annual Salary [$/year]'])
+bank_df_salary
+
+
+
+bank_df_all=pd.concat([Bank_df_1,Bank_df_2])
+bank_df_all
+
+
+
+bank_df_all=pd.merge(bank_df_all,bank_df_salary,on='Bank Client ID')
+bank_df_all
+
+
+
+new_client={'Bank Client ID':['11'],
+           'First Name':['Ryan'],
+           'Last Name':['Ahmed'],
+           'Annual Salary [$/year]':[5000]}
+new_client_df=pd.DataFrame(new_client,columns=['Bank Client ID','First Name','Last Name','Annual Salary [$/year]'])
+new_client_df
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
